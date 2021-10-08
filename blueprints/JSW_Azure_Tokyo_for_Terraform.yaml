@@ -6,7 +6,7 @@ metadata:
   description: >
     Java application with a managed Azure database deployed with TerraForm.
 clouds:
-  - azure: westeurope
+  - azure: japaneast
 
 # These are the blueprint parameters and their default values.
 # The values can be changed when creating a sandbox based on this
@@ -52,4 +52,4 @@ services:
         - SANDBOX_ID: $torque.environment.id
         - MANAGED_IDENTITY: $MANAGED_IDENTITY
 debugging:
-  bastion_availability: enabled-on
+  bastion_availability: enabled-off
