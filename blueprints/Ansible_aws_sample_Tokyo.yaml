@@ -1,0 +1,27 @@
+---
+spec_version: 1
+kind: blueprint
+
+metadata:
+  description: Ansible environments (Linux)
+
+clouds:
+  - aws: ap-northeast-1
+
+# These are the blueprint parameters and their default values.
+# The values can be changed when creating a sandbox based on this
+# blueprint.
+inputs:
+  - AWS_Type:
+      description: VM Hardware Profile for AWS
+      default_value: t2.micro
+
+# These are the applications that will be deployed in this blueprint
+applications:
+  - ansible:  # One instance of ansible (see: applications/ansible/ansible.yaml)
+      input_values:
+        - AWS_Instance_Type: $AWS_Type
+        - VM_Type: none
+
+debugging:
+  direct_access: on

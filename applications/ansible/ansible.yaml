@@ -1,0 +1,63 @@
+#
+#   This application file defines how to deploy and
+#   configure a Wordpress application
+#
+---
+spec_version: 1
+kind: application
+
+# These inputs are used by the initialization script to
+# configure the connectivity to the database
+# In the script we update the connectivity details which
+# are located in /var/www/html/wp-config.php
+inputs:
+  - VM_Type
+  - AWS_Instance_Type
+infrastructure:
+  # Specify the compute requirement for this app
+  # if we don't specify anything the default will be used
+  compute:
+    spec:
+      aws:
+        instance_type: $AWS_Instance_Type
+      azure:
+        vm_size: $VM_Type
+
+# This is a clean Ubuntu server image that will be
+# used to create a new EC2 instance in the defined AWS region
+source:
+  os_type: linux
+  image:
+    ami:
+      - id: ami-098f55b4287a885ba
+        region: eu-west-1
+        username: centos
+      - id: ami-06a46da680048c8ae
+        region: ap-northeast-1
+        username: centos
+    azure_image:
+      - urn: OpenLogic:CentOS:7.5:latest
+        username: adminuser
+    docker_image:
+      - tag: 7
+        name: centos
+
+configuration:
+  # The initialization script is intended to install
+  # app prerequisite and initialize the OS
+  # This script installs wordpress on a clean CentOS OS.
+  initialization:
+    script: ansible.sh
+  # This command restarts the Apache server after the initialization completes
+  start:
+#    script: start.sh
+    command: >
+      ansible-playbook /home/centos/playbook.yml
+  # To validate the installation, we wait to see that the ports are available
+  healthcheck:
+    wait_for_ports: ALL
+    timeout: 180
+
+debugging:
+  allow_direct_access: true
+  connection_protocol: RDP,SSH

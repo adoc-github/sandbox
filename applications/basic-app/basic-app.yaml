@@ -1,0 +1,27 @@
+spec_version: 1
+kind: application
+
+inputs:
+  - AWS_Instance_Type
+
+source:
+  os_type: linux
+  image:
+    ami:                                                   # AWS Image
+      - id: ami-0ef85cf6e604e5650
+        region: ap-northeast-1
+        username: ubuntu
+
+infrastructure:
+  compute:
+    spec:
+      aws:
+        instance_type: $AWS_Instance_Type
+
+configuration:
+  healthcheck:
+    script: healthcheck.sh
+    timeout: 180
+
+debugging:
+  connection_protocol: SSH
