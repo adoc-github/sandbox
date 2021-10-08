@@ -46,4 +46,4 @@ services:
         - SANDBOX_ID: $torque.environment.id
         - VPC_ID: $torque.environment.virtual_network_id  # Sandbox VPC Id
 debugging:
-  bastion_availability: enabled-on
+  bastion_availability: enabled-off
