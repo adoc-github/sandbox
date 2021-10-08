@@ -15,7 +15,7 @@ inputs:
   - DB_USER
   - DB_PASS
   - DB_NAME
-  - DB_HOSTNAME: none
+  - DB_HOSTNAME
   - USE_SSL: false
 
 # This section defines the infrastructure requirements
@@ -43,17 +43,14 @@ source:
     # This is a clean Ubuntu server image that will be used
     # to create a new EC2 instance in the defined AWS region
     ami:
-      - id: ami-06fd78dc2f0b69910
+      - id: ami-03ef731cc103c9f09
         region: eu-west-1
         username: ubuntu
-      - id: ami-0ef85cf6e604e5650
-        region: ap-northeast-1
-        username: ubuntu
     azure_image:
-      - urn: Canonical:UbuntuServer:18.04-LTS:latest
+      - urn: Canonical:UbuntuServer:16.04-LTS:latest
         username: adminuser
     docker_image:
-      - tag: 18.04
+      - tag: 16.04
         name: ubuntu
 
 configuration:
@@ -71,7 +68,7 @@ configuration:
   # to validate it is up
   healthcheck:
     script: healthcheck.sh
-    timeout: 600
+    timeout: 1200
 
 debugging:
   connection_protocol: SSH
