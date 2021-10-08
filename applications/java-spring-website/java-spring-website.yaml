@@ -26,9 +26,9 @@ infrastructure:
   compute:
     spec:
       aws:
-        instance_type: t2.medium
+        instance_type: t2.micro
       azure:
-        vm_size: Basic_A2
+        vm_size: Standard_B1ms
 
   connectivity:
     external:
@@ -46,11 +46,14 @@ source:
       - id: ami-03ef731cc103c9f09
         region: eu-west-1
         username: ubuntu
+      - id: ami-0ef85cf6e604e5650
+        region: ap-northeast-1
+        username: ubuntu
     azure_image:
-      - urn: Canonical:UbuntuServer:16.04-LTS:latest
+      - urn: Canonical:UbuntuServer:18.04-LTS:latest
         username: adminuser
     docker_image:
-      - tag: 16.04
+      - tag: 18.04
         name: ubuntu
 
 configuration:
