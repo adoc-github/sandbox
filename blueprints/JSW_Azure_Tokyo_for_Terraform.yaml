@@ -24,7 +24,11 @@ inputs:
       default_value: sv4YPTPs7fN&
   # Used to define the db admin password
   - DB_NAME: demo_db  # DB_NAME - a target database name
+  # Input format is <resource-group>/<managed-identity>
 #  - MANAGED_IDENTITY
+#      description: >
+#        Input format is <resource-group>/<managed-identity>
+
 # These are the applications that will be deployed in this blueprint
 applications:
   # One instance of java-spring-website
