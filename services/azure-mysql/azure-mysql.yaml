@@ -2,7 +2,8 @@ spec_version: 1
 kind: TerraForm
 
 inputs:
-#  - MANAGED_IDENTITY
+  # Input format is <resource-group>/<managed-identity>
+  - MANAGED_IDENTITY: torque-mtuzmtc1owm18585/torque-mtuzmtc1owm18585-sidecar-identity
   - DB_NAME
   - DB_USER
   - DB_PASS
@@ -28,6 +29,6 @@ outputs:        # Declaring the outputs from Terraform that will be used as an i
   # The server admin login username that you supplied
   - server_admin_login_name
   
-#permissions:
-#  azure:
-#    managed_identity_id: $MANAGED_IDENTITY
+permissions:
+  azure:
+    managed_identity_id: $MANAGED_IDENTITY
