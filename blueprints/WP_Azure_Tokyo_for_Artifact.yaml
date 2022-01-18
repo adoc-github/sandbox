@@ -24,7 +24,6 @@ inputs:
 
 artifacts:
   - wordpress: wordpress-5.8.tar.gz
-      "possible_values" : ["value1", "value2", "value3"]
 
 # These are the applications that will be deployed in this blueprint
 applications:
