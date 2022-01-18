@@ -21,7 +21,7 @@ inputs:
   - VM_Type:
       description: VM Hardware Profile to use for Azure Deployment
       default_value: Standard_B1ms
-      "possible_values" : [$default_value, "Standard_B2s", "Standard_D2s_v3"]
+      possible_values : ["Standard_B1ms", "Standard_B2s", "Standard_D2s_v3"]
 
 artifacts:
   - wordpress: wordpress-5.8.tar.gz
