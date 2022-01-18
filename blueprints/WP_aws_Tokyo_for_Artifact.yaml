@@ -21,6 +21,7 @@ inputs:
   - AWS_Type:
       description: VM Hardware Profile for AWS
       default_value: t2.micro
+      "possible_values" : ["t2.micro", "t3.small", "t2.medium"]
 
 artifacts:
   - wordpress: wordpress-5.6.2.tar.gz
