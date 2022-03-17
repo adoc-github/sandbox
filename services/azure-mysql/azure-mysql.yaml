@@ -10,7 +10,7 @@ inputs:
   - SANDBOX_ID
 
 module:
-  source: github.com/adoc-github/terraform-module/azure-mysql
+  source: github.com/adoc-github/terraform-module/service/azure-mysql
   # The source element is the location of your Terraform module,
   # Both public and private repos are supported
 
